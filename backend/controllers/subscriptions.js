@@ -167,7 +167,8 @@ exports.getEpisode = async (req, res, next) => {
     const result = episodes.filter((item) => item.guid === req.params.guid);
 
     res.status(200).json({
-      episode: result?.length > 0 ? result[0] : {},
+      // episode: result?.length > 0 ? result[0] : {},
+      episode: result.length > 0 ? result[0] : {},
     });
   } catch (err) {
     next(err);
