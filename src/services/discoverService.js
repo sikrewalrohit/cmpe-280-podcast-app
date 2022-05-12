@@ -32,7 +32,7 @@ class DiscoverService {
         feedUrl,
       });
     } catch (err) {
-      if (err.response?.data?.msg) {
+      if (err.response.data.msg) {
         throw new Error(err.response.data.msg);
       } else {
         throw new Error("Unable to subscribe to that feed");

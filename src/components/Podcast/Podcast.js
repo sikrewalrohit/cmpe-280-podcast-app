@@ -59,7 +59,7 @@ class Podcast extends Component {
 
   render() {
     // If the title was passed as a prop use that, otherwise wait until `componentDidMount()` updates the state.
-    const navTitle = this.props.location.state?.title || this.state.podcast.title;
+    const navTitle = this.props.location.state.title || this.state.podcast.title;
 
     return (
       <React.Fragment>
@@ -72,7 +72,7 @@ class Podcast extends Component {
           ) : null}
 
           <EpisodeList numEpisodes={this.state.numEpisodes} onShowMore={this.handleShowMoreClicked}>
-            {this.state.podcast?.episodes?.map((episode, i) => (
+            {this.state.podcast.episodes.map((episode, i) => (
               <EpisodeListItem
                 key={i}
                 episode={episode}

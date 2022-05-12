@@ -27,15 +27,15 @@ instance.interceptors.response.use(
     // Allow 401's from these URLs
     const whitelist = ["/api/login", "/api/register", "/api/password_reset"];
 
-    if (!whitelist.includes(err?.response?.config?.url)) {
-      if (err?.response?.status === 401) {
+    if (!whitelist.includes(err.response.config.url)) {
+      if (err.response.status === 401) {
         localStorage.removeItem(TOKEN_KEY);
         window.location.href = "/#/auth";
         return;
       }
     }
 
-    if (err?.response?.status === 429) {
+    if (err.response.status === 429) {
       window.location.href = "/#/rate_limit";
     }
 

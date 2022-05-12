@@ -40,8 +40,8 @@ function EpisodeListItem(props) {
           open={dialogOpen}
           id={props.id}
           podcastTitle={props.podcastTitle}
-          episodeTitle={props.episode?.title}
-          episodeGuid={props.episode?.guid}
+          episodeTitle={props.episode.title}
+          episodeGuid={props.episode.guid}
           artwork={props.artwork}
           onPlay={handlePlay}
           onClose={() => setDialogOpen(false)}

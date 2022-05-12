@@ -62,7 +62,7 @@ class SubscriptionsService {
 }
 
 function genericErrorHandler(err) {
-  if (err.response?.data?.msg) {
+  if (err.response.data.msg) {
     return err.response.data.msg;
   } else {
     return "There was a problem with the network";

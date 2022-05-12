@@ -28,7 +28,7 @@ function DiscoverListItem(props) {
         })
         .then(() => setIsSubscribed(true))
         .catch((err) => {
-          if (err?.response?.status === 409) {
+          if (err.response.status === 409) {
             setIsSubscribed(true); // Already subscribed
           }
         });
