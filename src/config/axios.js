@@ -2,7 +2,7 @@ import axios from "axios";
 import { TOKEN_KEY } from "../store/authContext";
 
 const instance = axios.create({
-  baseURL: process.env.NODE_ENV === "production" ? process.env.HOST_NAME : "http://54.160.147.109:4000",
+  baseURL: "http://54.160.147.109:4000",
 });
 
 instance.interceptors.request.use(
@@ -35,7 +35,7 @@ instance.interceptors.response.use(
       }
     }
 
-    if (err.response.status === 429) {
+    if (err?.response?.status === 429) {
       window.location.href = "/#/rate_limit";
     }
 
