@@ -11,6 +11,7 @@ import NavBar from "@/components/NavBar/NavBar";
 import SubscriptionItem from "@/components/Subscriptions/SubscriptionItem";
 import Welcome from "@/components/Subscriptions/Welcome";
 import subscriptionsService from "@/services/subscriptionsService";
+import Pagination from '@mui/material/Pagination';
 
 const useStyles = makeStyles((theme) => ({
   menuButton: {
@@ -36,6 +37,14 @@ function Subscriptions() {
 
   const [subscriptions, setSubscriptions] = useState([]);
   const [noSubscriptions, setNoSubscriptions] = useState(false);
+
+  var [pageNumber, setpageChange] = useState(1);
+  // console.log("=======", pageNumber);
+
+  const pageChange = (e) => {
+    setpageChange(Number(e.target.innerText));
+  };
+
 
   useEffect(() => {
     (async () => {
@@ -79,12 +88,17 @@ function Subscriptions() {
           </Box>
         ) : (
           <div className={classes.subscriptionsGrid}>
-            {subscriptions.map(({ _id, title, artwork }) => (
+            {subscriptions.slice((pageNumber-1)*12, (pageNumber*12)).map(({ _id, title, artwork }) => (
               <SubscriptionItem clickable key={_id} id={_id} title={title} artwork={artwork} />
             ))}
           </div>
         )}
       </Container>
+      
+      <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
+        <Pagination count={Math.floor(subscriptions.length/12)+1} variant="outlined" color="primary" onChange={pageChange}/>
+      </Box>
+
     </React.Fragment>
   );
 }
